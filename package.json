@@ -1,0 +1,19 @@
+{
+  "name": "pod",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@svgr/webpack": "^5.4.0",
+    "next": "9.5.5",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "svg-url-loader": "^6.0.0",
+    "url-loader": "^4.1.1"
+  },
+  "devDependencies": {}
+}

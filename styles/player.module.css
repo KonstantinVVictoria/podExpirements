@@ -1,0 +1,48 @@
+.player-container {
+  display: relative;
+  box-sizing: border-box;
+  border-radius: 200px;
+  border: solid rgb(216, 216, 216);
+  box-shadow: 0 0 10px rgb(32, 192, 104);
+  transition: box-shadow 500ms ease;
+}
+.player-component {
+  display: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(32, 192, 104);
+  border-radius: 200px;
+  display: flex;
+  overflow: hidden;
+  transition: background-color 500ms ease;
+  box-shadow: 0 0 9px rgb(97, 97, 97);
+}
+.play-pause-button {
+  display: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+  background-color: rgb(60, 228, 136);
+  border-radius: 200px;
+  margin-right: 10px;
+  transition: background-color 500ms ease;
+}
+.slider-container {
+  box-sizing: border-box;
+  display: relative;
+  border-radius: 200px;
+  background-color: rgb(190, 190, 190);
+  overflow: hidden;
+  pointer-events: none;
+}
+.slider {
+  box-sizing: border-box;
+  display: relative;
+  background-color: rgba(157, 157, 157);
+  pointer-events: none;
+  overflow: hidden;
+}
+@media only screen and (max-width: 500px) {
+  .player-container {
+    max-width: 100vw;
+  }
+}
