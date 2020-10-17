@@ -9,7 +9,7 @@ export default function Home() {
       <Player
         id={1}
         serial={1}
-        Style={{ height: 40, width: 200, padding: [0], borderSize: 4 }}
+        Style={{ height: 60, width: 300, padding: [0], borderSize: 4 }}
         src="test"
         img="blind-lights"
         title="Blinding Lights"
@@ -17,10 +17,18 @@ export default function Home() {
       <Player
         id={2}
         serial={2}
-        Style={{ height: 40, width: 200, padding: [0], borderSize: 4 }}
+        Style={{ height: 60, width: 300, padding: [0], borderSize: 4 }}
         src="dua"
         img="dua_lipa"
         title="Dont Stop Me Now"
+      />
+      <Player
+        id={3}
+        serial={3}
+        Style={{ height: 60, width: 300, padding: [0], borderSize: 4 }}
+        src="soarin"
+        img="bazzi"
+        title="Soarin"
       />
     </div>
   );

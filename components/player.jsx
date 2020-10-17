@@ -28,6 +28,7 @@ const Player = ({ Style, serial, src, img, title }) => {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
+        margin: "0px 10px 0px",
       }}
       className={Style["player-full-container"]}
     >
