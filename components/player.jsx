@@ -23,15 +23,7 @@ const Player = ({ Style, serial, src, img, title }) => {
   const callbacks = { setIsInit: setIsInit, setIsPlaying: setIsPlaying };
   const { playOrPause } = playerFunctions(callbacks, properties);
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        margin: "0px 10px 0px",
-      }}
-      className={Style["player-full-container"]}
-    >
+    <AudioPlayer>
       <JumboTron img={img} title={title} />
       <PlayerContainer serial={serial}>
         <PlayerComponent serial={serial}>
@@ -44,7 +36,7 @@ const Player = ({ Style, serial, src, img, title }) => {
           <audio style={{ hidden: true }} src={`/${src}.mp3`}></audio>
         </PlayerComponent>
       </PlayerContainer>
-    </div>
+    </AudioPlayer>
   );
 };
 
@@ -80,12 +72,14 @@ const playerFunctions = ({ setIsInit, setIsPlaying }, { isInit, serial }) => {
 
     if (truthy) {
       const { canvasCtx, audioCtx } = isInit;
-      console.log(player.parentElement.parentElement.children[0]);
+      playPauseButton.style.backgroundColor = "rgb(268, 225, 40)";
+      playPauseButton.style.boxShadow = "rgb(228, 200, 40) -2px 2px 7px inset";
+      player.children[1].children[0].children[0].style.background = `linear-gradient(0deg, rgba(83,83,83,0) 0%, rgba(242, 218, 123, 0.08) 46%, rgba(83,83,83,0) 100%)`;
       player.parentElement.parentElement.children[0].style.boxShadow =
         "0 0 24px rgb(242, 218, 123)";
       player.parentElement.parentElement.children[0].children[0].style.backgroundColor = `rgba(242, 218, 123, 0.6)`;
       player.style.boxShadow = "0 0 24px rgb(242, 218, 123)";
-      playPauseButton.style.backgroundColor = "rgb(228, 169, 60)";
+
       player.style.backgroundColor = "rgb(242, 218, 123)";
       canvasCtx.strokeStyle = "rgb(242, 225, 158)";
       audioElement.play();
@@ -94,6 +88,8 @@ const playerFunctions = ({ setIsInit, setIsPlaying }, { isInit, serial }) => {
       audioElement.volume = size > 1 ? 1 : size;
     } else {
       const { canvasCtx } = isInit;
+      playPauseButton.style.boxShadow = "inset -2px 2px 7px rgb(26, 151, 82)";
+      player.children[1].children[0].children[0].style.background = `linear-gradient(0deg, rgba(83,83,83,0) 0%, rgba(60, 228, 136, 0.08) 46%, rgba(83,83,83,0) 100%)`;
       player.parentElement.parentElement.children[0].children[0].style.backgroundColor = `rgba(32, 192, 104, 0.6)`;
       player.parentElement.parentElement.children[0].style.boxShadow =
         "0 0 10px rgb(32, 192, 104)";
@@ -153,7 +149,22 @@ const playerFunctions = ({ setIsInit, setIsPlaying }, { isInit, serial }) => {
   return functions;
 };
 //Component Details
-
+const AudioPlayer = ({ children }) => {
+  return (
+    <div
+      className={Style["audio-player"]}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        margin: "0px 10px 0px",
+      }}
+      onMouseEnter={(e) => console.log(e.target)}
+    >
+      {children}
+    </div>
+  );
+};
 const JumboTron = ({ children, serial, img, title }) => {
   return (
     <div
@@ -165,7 +176,6 @@ const JumboTron = ({ children, serial, img, title }) => {
       }}
       className={Style["jumbo_player"]}
       onMouseEnter={({ target }) => {
-        console.log(target);
         target.parentElement.children[1].style.opacity = 1;
       }}
       onMouseLeave={({ target }) => {
@@ -187,7 +197,7 @@ const JumboTron = ({ children, serial, img, title }) => {
           height: "100%",
           marginTop: "5%",
           zIndex: 4,
-          fontSize: "100%",
+          fontSize: "150%",
           position: "absolute",
           color: "white",
           opacity: "0",
@@ -223,7 +233,6 @@ const PlayerComponent = ({ children, serial }) => {
     let playPauseButton = player.children[0];
     let slider = player.children[1].children[0];
     let audioElement = player.children[2];
-    console.log(audioElement);
     if (isDrag && clientX >= slider.getBoundingClientRect().left - 10) {
       let size =
         ((clientX - slider.getBoundingClientRect().left) /
@@ -302,6 +311,7 @@ const Visualizer = ({ serial }) => {
           height: "100%",
           width: "100%",
           boxShadow: `inset 0px 0px 30px rgba(0, 0, 0, 0.6)`,
+          background: `linear-gradient(0deg, rgba(83,83,83,0) 0%, rgba(60, 228, 136, 0.06) 46%, rgba(83,83,83,0) 100%)`,
         }}
       ></div>
       <canvas
