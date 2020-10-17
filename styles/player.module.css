@@ -40,9 +40,9 @@
   box-sizing: border-box;
   position: relative;
   border-radius: 200px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(17, 100, 56);
   overflow: hidden;
-  box-shadow: inset 0px 0px 24px rgba(75, 75, 75, 1);
+  box-shadow: inset -10px 10px 24px rgb(8, 68, 35);
 }
 .slider {
   border-radius: 200px;

@@ -74,6 +74,9 @@ const playerFunctions = ({ setIsInit, setIsPlaying }, { isInit, serial }) => {
       const { canvasCtx, audioCtx } = isInit;
       playPauseButton.style.backgroundColor = "rgb(268, 225, 40)";
       playPauseButton.style.boxShadow = "rgb(228, 200, 40) -2px 2px 7px inset";
+      player.children[1].style.background = "rgb(253, 225, 0)";
+      player.children[1].style.boxShadow =
+        "rgb(193, 150, 0) -10px 10px 24px inset";
       player.children[1].children[0].children[0].style.background = `linear-gradient(0deg, rgba(83,83,83,0) 0%, rgba(242, 218, 123, 0.08) 46%, rgba(83,83,83,0) 100%)`;
       player.parentElement.parentElement.children[0].style.boxShadow =
         "0 0 24px rgb(242, 218, 123)";
@@ -88,6 +91,9 @@ const playerFunctions = ({ setIsInit, setIsPlaying }, { isInit, serial }) => {
       audioElement.volume = size > 1 ? 1 : size;
     } else {
       const { canvasCtx } = isInit;
+      player.children[1].style.background = "rgb(17, 100, 56)";
+      player.children[1].style.boxShadow =
+        " inset -10px 10px 24px rgb(8, 68, 35)";
       playPauseButton.style.boxShadow = "inset -2px 2px 7px rgb(26, 151, 82)";
       player.children[1].children[0].children[0].style.background = `linear-gradient(0deg, rgba(83,83,83,0) 0%, rgba(60, 228, 136, 0.08) 46%, rgba(83,83,83,0) 100%)`;
       player.parentElement.parentElement.children[0].children[0].style.backgroundColor = `rgba(32, 192, 104, 0.6)`;
