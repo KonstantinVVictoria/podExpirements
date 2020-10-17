@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Style from "../styles/player.module.css";
 import PlayIcon from "./assets/play.svg";
 import PauseIcon from "./assets/pause.svg";
-
+import PreviousIcon from "./assets/previous.svg";
+import SkipIcon from "./assets/skip.svg";
 let size = {};
 let padding = [null];
 let borderSize = null;
@@ -24,7 +25,7 @@ const Player = ({ Style, serial, src, img, title }) => {
   const { playOrPause } = playerFunctions(callbacks, properties);
   return (
     <AudioPlayer>
-      <JumboTron img={img} title={title} />
+      <JumboTron img={img} title={title} serial={serial} />
       <PlayerContainer serial={serial}>
         <PlayerComponent serial={serial}>
           <PlayPauseButton isPlaying={isPlaying} setIsPlaying={playOrPause} />
@@ -181,14 +182,15 @@ const JumboTron = ({ children, serial, img, title }) => {
         transform: `translateY(${padding[0] - 4 + size.height / 2}px)`,
       }}
       className={Style["jumbo_player"]}
-      onMouseEnter={({ target }) => {
-        target.parentElement.children[1].style.opacity = 1;
+      onMouseEnter={() => {
+        document.getElementById(`player-title-${serial}`).style.opacity = 1;
       }}
-      onMouseLeave={({ target }) => {
-        target.parentElement.children[1].style.opacity = 0;
+      onMouseLeave={() => {
+        document.getElementById(`player-title-${serial}`).style.opacity = 0;
       }}
     >
       <div
+        className={Style["jumbo_tron_overlay"]}
         style={{
           position: "absolute",
           height: size.width + "px",
@@ -196,6 +198,7 @@ const JumboTron = ({ children, serial, img, title }) => {
         }}
       />
       <p
+        id={`player-title-${serial}`}
         style={{
           pointerEvents: "none",
           textAlign: "center",
@@ -211,6 +214,18 @@ const JumboTron = ({ children, serial, img, title }) => {
       >
         {title}
       </p>
+      <div
+        style={{
+          opacity: 0,
+          position: "absolute",
+          display: "flex",
+          height: "20%",
+          bottom: size.height / 2 + "px",
+        }}
+      >
+        <PreviousIcon />
+        <SkipIcon />
+      </div>
       <img style={{ height: "100%", width: "100%" }} src={`/${img}.jpg`} />
     </div>
   );
