@@ -185,6 +185,12 @@ const JumboTron = ({ children, serial, img, title }) => {
       onMouseEnter={() => {
         document.getElementById(`player-title-${serial}`).style.opacity = 1;
       }}
+      onTouchEnd={() => {
+        document.getElementById(`player-title-${serial}`).style.opacity = 1;
+        setTimeout(() => {
+          document.getElementById(`player-title-${serial}`).style.opacity = 0;
+        }, 2000);
+      }}
       onMouseLeave={() => {
         document.getElementById(`player-title-${serial}`).style.opacity = 0;
       }}
@@ -214,18 +220,6 @@ const JumboTron = ({ children, serial, img, title }) => {
       >
         {title}
       </p>
-      <div
-        style={{
-          opacity: 0,
-          position: "absolute",
-          display: "flex",
-          height: "20%",
-          bottom: size.height / 2 + "px",
-        }}
-      >
-        <PreviousIcon />
-        <SkipIcon />
-      </div>
       <img style={{ height: "100%", width: "100%" }} src={`/${img}.jpg`} />
     </div>
   );
