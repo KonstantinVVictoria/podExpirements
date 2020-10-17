@@ -294,10 +294,23 @@ const Slider = ({ children }) => {
 
 const Visualizer = ({ serial }) => {
   return (
-    <canvas
-      id={"visualizer_" + serial}
-      style={{ height: "100%", width: "100%" }}
-    ></canvas>
+    <>
+      <div
+        style={{
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+          boxShadow: `inset 0px 0px 30px rgba(0, 0, 0, 0.6)`,
+        }}
+      ></div>
+      <canvas
+        id={"visualizer_" + serial}
+        style={{
+          height: "100%",
+          width: "100%",
+        }}
+      ></canvas>
+    </>
   );
 };
 export default Player;
