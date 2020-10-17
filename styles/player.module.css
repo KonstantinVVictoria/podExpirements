@@ -38,6 +38,9 @@
   box-shadow: inset -2px 2px 7px rgb(26, 151, 82);
   transition: background-color 500ms ease, box-shadow 500ms ease;
 }
+.play-pause-button > svg {
+  pointer-events: none;
+}
 .slider-container {
   -webkit-transform: translate3d(0, 0, 0);
   box-sizing: border-box;
